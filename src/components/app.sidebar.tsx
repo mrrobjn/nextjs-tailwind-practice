@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -24,7 +24,9 @@ const Sidebar = () => {
           <Link
             key={index}
             className={`mt-2.5 p-2 rounded font-bold hover:bg-white hover:text-sky-600 transition ${
-              pathname === url.path ? "bg-white text-sky-600" : "text-white"
+              pathname.startsWith(url.path)
+                ? "bg-white text-sky-600"
+                : "text-white"
             }`}
             href={url.path}
           >
