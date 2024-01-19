@@ -1,8 +1,5 @@
+import Link from "next/link";
+
 export default function Home() {
-  return (
-    <>
-      <h1>Welcome back</h1>
-    </>
-    
-  )
+  return <Link href={'/user'}>Admin</Link>;
 }
