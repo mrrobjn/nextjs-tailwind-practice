@@ -1,8 +1,9 @@
 interface User {
-    id: number;
-    name: string;
-    username: string;
-    email: string;
-    phone: string;
-    website: string;
+  _id: string;
+  name: string;
+  username: string;
+  email: string;
+  phone: string;
+  createdAt: String;
+  updatedAt: String;
 }

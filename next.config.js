@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {};
 
 module.exports = {
-    env: {
-      BASE_URL: process.env.BASE_URL,
-    },
-  };
-  
+  env: {
+    BASE_URL: process.env.BASE_URL,
+    MONGODB_URL: process.env.MONGODB_URL,
+  },
+};
