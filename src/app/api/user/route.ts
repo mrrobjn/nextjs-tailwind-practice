@@ -1,12 +1,13 @@
+import MESSAGES from "@/constants/message";
 import connectDB from "@/db/mongoose";
-import User from "@/models/user";
+import { User } from "@/models";
 import { NextResponse } from "next/server";
 
 export const GET = async (req: Request, res: Response) => {
   await connectDB();
   const data = await User.find({}).limit(10);
   return NextResponse.json(
-    { message: "ok", status: 200, data },
+    { message: "OK", status: 200, data },
     { status: 200 }
   );
 };
@@ -20,6 +21,7 @@ export const POST = async (req: Request, res: Response) => {
       username: formData.get("username"),
       email: formData.get("email"),
       phone: formData.get("phone"),
+      password: formData.get("password"),
     };
 
     await connectDB();
@@ -29,8 +31,7 @@ export const POST = async (req: Request, res: Response) => {
     if (validationError) {
       return NextResponse.json(
         {
-          message: "Validation Error",
-          errors: validationError.errors,
+          message: Object.values(validationError.errors)[0].message,
           status: 400,
         },
         { status: 400 }
@@ -55,7 +56,7 @@ export const POST = async (req: Request, res: Response) => {
     }
     console.log(err);
     return NextResponse.json(
-      { message: "Internal Server Error", status: 500 },
+      { message: MESSAGES.SERVER_ERROR, status: 500 },
       { status: 500 }
     );
   }

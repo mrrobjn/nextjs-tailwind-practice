@@ -1,5 +1,5 @@
 "use client";
-import UserService from "@/services/userService";
+import UserService from "@/api/user";
 import Link from "next/link";
 import useSWR from "swr";
 
@@ -21,9 +21,9 @@ const UserTable = () => {
             <tr className="bg-slate-300">
               <th className="p-4 border border-slate-300">#</th>
               <th className="p-4 border border-slate-300">Name</th>
-              <th className="p-4 border border-slate-300">User name</th>
               <th className="p-4 border border-slate-300">Email</th>
               <th className="p-4 border border-slate-300">Phone</th>
+              <th className="p-4 border border-slate-300">Role</th>
               <th className="p-4 border border-slate-300">Actions</th>
             </tr>
           </thead>
@@ -34,14 +34,15 @@ const UserTable = () => {
                   <tr key={index}>
                     <td className="p-4 border border-slate-300">{index + 1}</td>
                     <td className="p-4 border border-slate-300">{user.name}</td>
-                    <td className="p-4 border border-slate-300">
-                      {user.username}
-                    </td>
+
                     <td className="p-4 border border-slate-300">
                       {user.email}
                     </td>
                     <td className="p-4 border border-slate-300">
                       {user.phone}
+                    </td>
+                    <td className="p-4 border border-slate-300">
+                      {user.isAdmin ? "Admin" : "User"}
                     </td>
                     <td className="p-4 border border-slate-300 whitespace-nowrap text-center">
                       <Link

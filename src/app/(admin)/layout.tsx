@@ -1,7 +1,6 @@
 import { MainLayout } from '@/layouts'
-import React, { ReactNode } from 'react'
 
-const layout = ({children}:{children:ReactNode}) => {
+const layout = ({children}:LayoutProps) => {
   return (
     <MainLayout>{children}</MainLayout>
   )
